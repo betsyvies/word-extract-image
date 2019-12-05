@@ -9,7 +9,9 @@ def ocr():
     try: 
         file = request.json['image']
         output = process_image(file)
-        return jsonify({"data": output})
+        return output
+        # { "data": output.data.replace('\r\n', ''), "color": output.color}
+        # jsonify({"data": output})
     
     except:
         return jsonify(
