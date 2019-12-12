@@ -1,18 +1,18 @@
 import os
 from flask import Flask,request, jsonify
+from flask_cors import CORS
 from ocr import process_image
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/ocr', methods=["POST"])
 def ocr():
-    try: 
+    try:
         file = request.json['image']
         output = process_image(file)
         return jsonify({"data": output})
-        # { "data": output.data.replace('\r\n', ''), "color": output.color}
-        # jsonify({"data": output})
-    
+
     except:
         return jsonify(
             {"error": "Did you mean to send: {'image': 'image'}"}

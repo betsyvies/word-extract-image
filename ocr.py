@@ -5,9 +5,11 @@ from PIL import ImageFilter
 from PIL import Image
 from PIL import ImageFont
 from io import BytesIO
+import base64
 
 def process_image(img):
   image = _get_image(img)
+  print(image)
   image.filter(ImageFilter.SHARPEN)
   # Cabify = ((110, 91, 217), 1102)
   # Beat = ((35, 210, 171), 9345)
@@ -23,18 +25,19 @@ def process_image(img):
   #}
 
 def _get_image(img):
-  return Image.open(BytesIO(requests.get(img).content))
+  print(BytesIO(base64.b64decode(img)))
+  return Image.open(BytesIO(base64.b64decode(img)))
 
 def _get_app(image):
   lista_strings = pytesseract.image_to_string(image).split()
   new_lista = []
 
-  for string in lista_strings: 
+  for string in lista_strings:
     if string == 'Easy':
       new_lista.append(['easy', lista_strings.index(string)])
     elif string == 'Lite':
       new_lista.append(['lite', lista_strings.index(string)])
-    elif string == 'Executive': 
+    elif string == 'Executive':
       new_lista.append(['executive', lista_strings.index(string)])
 
   category_cabify = [
