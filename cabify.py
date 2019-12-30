@@ -35,4 +35,10 @@ def _get_time(lista):
     for i, x in enumerate(string):
       if x == 'm':
         if string[i + 1] == 'i':
-          return lista[lista.index(string) - 1] + ' min'
+          if string[i - 1] != 'n':
+            if string[i - 2] != 'n' :
+              return string[i - 2] + string[i - 1] + ' min'
+            else :
+              return string[i - 1] + ' min'
+          else :
+            return lista[lista.index(string) - 1] + ' min'
