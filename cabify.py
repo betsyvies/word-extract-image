@@ -17,7 +17,6 @@ def cabify(lista_strings) :
   return category_cabify
 
 def _get_data(category, lista):
-  print(lista)
   new_obj = {
       'category': category,
       'price': _get_price(lista),
