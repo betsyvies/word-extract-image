@@ -1,12 +1,26 @@
-from PIL import Image, ImageFilter
+#from PIL import Image, ImageFilter
+
+import cv2
+
+path="/Users/betsyvidal/Desktop/freelo-images/"
+
+file="Screenshot_20190925_100256_com.cabify.rider.jpg"
+fileb="IMG-20190925-WA0038_pag1.png"
+
+img = cv2.imread(path+file)
+#print(img)
+#(110, 91, 217), 1102) 681,472 1261, 1227
+crop_img = img[600:1261, 0:720]
+#print(crop_img)
+cv2.imwrite(path + fileb, crop_img)
  
-#foto = Image.open('./cabify.jpeg')
-imagen = Image.open('./cabify.jpeg')
-imagen.mode
-imagenbn = imagen.filter(ImageFilter.DETAIL)
-imagenbn.show()
-imagenbn.save('./cabify-gray.jpeg')
-#detallar = imagen.filter(ImageFilter.DETAIL)
+# foto = Image.open('./cabify.jpeg')
+#imagen = Image.open('./cabify.jpeg')
+#imagen.mode
+#imagenbn = imagen.filter(ImageFilter.DETAIL)
+#imagenbn.show()
+#imagenbn.save('./cabify-gray.jpeg')
+# detallar = imagen.filter(ImageFilter.DETAIL)
 #datos = foto.getdata()
  
 #para el calculo del promedio se utilizara la division entera con el operador de division doble "//" para evitar decimales
